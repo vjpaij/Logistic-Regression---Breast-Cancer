@@ -10,7 +10,7 @@ print(data.describe())
 sns.heatmap(data.isnull())
 plt.show()
 
-#drop null column "Unnamed: 32" and irrelevant column "id"
+#drop null column "Unnamed: 32" and irrelevant column "id", inplace = True overwrites the dataframe
 data.drop(["Unnamed: 32", "id"], axis=1, inplace=True)
 
 #Set values to 0 if value of column diagnosis is M, else set it to 0.
@@ -31,7 +31,15 @@ y = data["diagnosis"]
 #predictor variable
 X = data.drop(["diagnosis"], axis = 1)
 
-# Normalize the input predictors to have the uniform units
+# Standardize the input predictors to have the uniform units
+'''
+Normalization scales data to a fixed range (e.g., 0 to 1), while standardization scales data to have a mean of 0 and a standard 
+deviation of 1.
+Normalization is useful for algorithms that do not assume any distribution of the data, such as k-nearest neighbors and neural 
+networks.
+Standardization is useful for algorithms that assume a Gaussian distribution of the data, such as linear regression and logistic 
+regression.
+'''
 from sklearn.preprocessing import StandardScaler
 
 # 1. create a scaler object
