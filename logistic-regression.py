@@ -8,7 +8,7 @@ print(data.info())
 print(data.describe())
 
 sns.heatmap(data.isnull())
-#plt.show()
+plt.show()
 
 #drop null column "Unnamed: 32" and irrelevant column "id"
 data.drop(["Unnamed: 32", "id"], axis=1, inplace=True)
@@ -20,7 +20,7 @@ data["diagnosis"] = [1 if i == "M" else 0 for i in data["diagnosis"]]
 #to change the datattype of diagnosis from integer to a categorical. copy=False ensures it modifies the original dataframe.
 data["diagnosis"] = data["diagnosis"].astype("category", copy=False)
 data["diagnosis"].value_counts().plot(kind="bar")
-#plt.show()
+plt.show()
 
 #Divide the data into target(output) and predictors(input)
 #Here we want to predict the diagnosis(target) value based on the different inputs(predictors)
